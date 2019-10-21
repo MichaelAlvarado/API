@@ -2,6 +2,8 @@ package edu.uprm.cse.datastructures.cardealer.util;
 
 import java.util.Iterator;
 
+import edu.uprm.cse.datastructures.cardealer.model.Car;
+
 public interface SortedList<E> extends Iterable<E>{
 
 		// valid position in the list
@@ -20,6 +22,8 @@ public interface SortedList<E> extends Iterable<E>{
 		public boolean isEmpty();
 		public int firstIndex(E e);
 		public int lastIndex(E e);
+		public E[] toArray(Class<E> e);
+		
 
 		
 }
