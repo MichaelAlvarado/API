@@ -22,7 +22,6 @@ public interface SortedList<E> extends Iterable<E>{
 		public boolean isEmpty();
 		public int firstIndex(E e);
 		public int lastIndex(E e);
-		public E[] toArray(Class<E> e);
 		
 
 		

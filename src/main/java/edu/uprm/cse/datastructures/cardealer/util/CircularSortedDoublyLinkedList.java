@@ -55,12 +55,13 @@ class CSDLLIterator<E> implements Iterator<E>{
 	}
 	@Override
 	public boolean hasNext() {
-		return current.getNext() != head;
+		return !current.getNext().equals(head);
 	}
 
 	@Override
 	public E next() {
-		return current.getNext().getElement();
+		current = current.getNext();
+		return current.getElement();
 	}
 	
 }
@@ -218,17 +219,7 @@ public class CircularSortedDoublyLinkedList<E> implements SortedList<E>, Iterabl
 	public Node<E> getHead(){
 		return this.head;
 	}
-	
-	@Override
-	public  E[] toArray(Class<E> type) {
-		 E[] elements = (E[])Array.newInstance(type, this.size);
-		int c =0;
-		for(E x: this) {
-			elements[c]=x;
-			c++;
-		}
-		return elements;
-	}
+
 	
 
 }
