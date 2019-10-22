@@ -1,12 +1,21 @@
 package edu.uprm.cse.datastructures.cardealer.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElement;
 // Car class pojo
+@XmlRootElement (name = "car")
 public class Car {
+	@XmlElement
 	private long carId;
+	@XmlElement
 	private String carBrand;
+	@XmlElement
 	private String carModel;
+	@XmlElement
 	private String carModelOption;
+	@XmlElement
 	private double carPrice;
+
 	public long getCarId() {
 		return carId;
 	}

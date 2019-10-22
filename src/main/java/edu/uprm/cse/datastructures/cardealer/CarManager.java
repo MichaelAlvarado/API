@@ -46,13 +46,14 @@ public class CarManager {
 	}    
 
 	@GET
-	@Path("{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Car getCar(@PathParam("id") long id){
 		for(Car x: cList) {
 			if(x.getCarId() == id)
 				return x;
 		}
+		Response.status(Response.Status.NOT_FOUND).build();
 		throw new NotFoundException(new JsonError("Error", "Customer " + id + " not found"));
 	}  
 
@@ -66,33 +67,33 @@ public class CarManager {
 
 	@DELETE
 	@Path("/{id}/delete")
-	public void deleteCar(@PathParam("id") long id){
+	public Response deleteCar(@PathParam("id") long id){
 		Car car = null;
 		for(Car x: cList) {
 			if(x.getCarId() == id)
 				car = x;
 		}
-		if(!cList.remove(car)) {
+		if(cList.remove(car)) {
+			return Response.status(Response.Status.OK).build();
+		}
+		else {
 			throw new NotFoundException(new JsonError("Error", "Customer " + id + " not found"));
 		}
 	}
-//Update method not delevop yet
-//	@PUT
-//	@Path("/{id}/update")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Response updateCar(Car car){
-//		int matchIdx = 0;
-//		Optional<Car> match = cList.stream()
-//				.filter(c -> c.getId() == customer.getId())
-//				.findFirst();
-//		if (match.isPresent()) {
-//			matchIdx = cList.indexOf(match.get());
-//			cList.set(matchIdx, customer);
-//			return Response.status(Response.Status.OK).build();
-//		} else {
-//			return Response.status(Response.Status.NOT_FOUND).build();      
-//		}
-//	}                                  
+	//Update method not delevop yet
+	@PUT
+	@Path("{id}/update")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateCar(Car car){
+		boolean found = false;
+		found = cList.remove(this.getCar(car.getCarId()));
+		if (found) {
+			cList.add(car);
+			return Response.status(Response.Status.OK).build();
+		} else {
+			return Response.status(Response.Status.NOT_FOUND).build();      
+		}
+	}                                  
 
 }      
 
