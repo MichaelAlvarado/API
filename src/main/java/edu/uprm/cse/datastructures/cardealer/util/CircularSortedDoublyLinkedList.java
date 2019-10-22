@@ -7,6 +7,9 @@ import java.util.Iterator;
 
 import edu.uprm.cse.datastructures.cardealer.util.SortedList;
 
+/*
+ * Node object to be use for CircularSortedDoublyLinkedList
+ */
 class Node<E>{
 	private E element;
 	private Node<E> prev;
@@ -46,6 +49,9 @@ class Node<E>{
 		this.prev = null;
 	}
 }
+/*
+ * Iterator to make the iterator of CircularSortedDoublyLinkedList
+ */
 class CSDLLIterator<E> implements Iterator<E>{
 	Node <E> current;
 	Node <E> head;
@@ -78,7 +84,7 @@ public class CircularSortedDoublyLinkedList<E> implements SortedList<E>, Iterabl
 		this.comparator = comparator;
 	}
 	
-	//Este codigo se puede arreglar
+	//This add method could be optimized
 	@Override
 	public boolean add(E obj) {
 		if(this.isEmpty()) {
@@ -216,10 +222,10 @@ public class CircularSortedDoublyLinkedList<E> implements SortedList<E>, Iterabl
 		}
 		return current;
 	}
+	
+	//this method is to send the header to the iterator
 	public Node<E> getHead(){
 		return this.head;
 	}
-
-	
 
 }

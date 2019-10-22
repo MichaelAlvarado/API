@@ -2,8 +2,12 @@ package edu.uprm.cse.datastructures.cardealer.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
-// Car class pojo
-@XmlRootElement (name = "car")
+/* Car class pojo
+ Added the Xml annotations 
+ (this library was added to the Java Build Path)
+ if this class doenst compile please verify the library Jaxb Api
+ */
+@XmlRootElement 
 public class Car {
 	@XmlElement
 	private long carId;
